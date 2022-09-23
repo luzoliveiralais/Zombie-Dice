@@ -140,8 +140,10 @@ placar_final = []
 for nome in nomes_jogadores:
     placar_final.append({'cerebros': 0})
 
+placar_parcial = 0
 # INICIO DA LÓGICA DO JOGO
-while placar_final[jogador_atual]["cerebros"] < 13:
+
+while placar_parcial < 13:
 
     # SORTEANDO OS DADOS
     dados = pega_dados_do_copo(3)
@@ -165,12 +167,13 @@ while placar_final[jogador_atual]["cerebros"] < 13:
 
     # ADICIONANDO PONTOS
     placar_parcial = adc_pontos_placar_rodada(placar_rodada, faces_sorteadas)
-    # placar_parcial = placar_rodada['cerebros'] + placar_final[jogador_atual]['cerebros']
-    mostra_pontuacao_rodada(placar_rodada, placar_parcial['cerebros'])
+    placar_parcial = placar_rodada['cerebros'] + placar_final[jogador_atual]['cerebros']
+    mostra_pontuacao_rodada(placar_rodada, placar_parcial)
 
     # PRIMEIRAS CHECAGENS
     if placar_rodada["tiros"] >= 3:
         printa_na_tela('Você foi morto, seu turno acabou!x.x')
+        print(f'Você levou {placar_rodada["tiros"]} e não vai pontuar!')
         mostra_placar_final(placar_final, jogador_atual)
         zera_placar_rodada(placar_rodada)
         copo_dados()
@@ -178,13 +181,16 @@ while placar_final[jogador_atual]["cerebros"] < 13:
         if jogador_atual == len(nomes_jogadores):
             jogador_atual = 0
 
-    elif placar_final[jogador_atual]['cerebros'] >= 13:
-        printa_na_tela(f"Parabéns {nomes_jogadores[jogador_atual]}, você comeu "
-                       f"{placar_final[jogador_atual]['cerebros']} e ganhou o jogo!")
-
     else:
-        printa_na_tela('Você deseja continuar?')
-        continua_turno = str(input('\033[1;35mSIM ou NÃO?\033[m').strip().lower())
+        if placar_parcial >= 13:
+            printa_na_tela(f"Parabéns {nomes_jogadores[jogador_atual]}, você comeu "
+                           f"{placar_parcial} cérebros e ganhou o jogo!")
+            break
+        else:
+            printa_na_tela('Você deseja continuar?')
+            continua_turno = str(input('\033[1;35mSIM ou NÃO?\033[m').strip().lower())
+
+
 
         # SE O JOGADOR OPTAR EM CONTINUAR: SORTEIO DE DADOS COM PEGADAS E NOVOS DADOS.
         while continua_turno == 'sim':
@@ -221,12 +227,12 @@ while placar_final[jogador_atual]["cerebros"] < 13:
             # ao placar da rodada serão somados os novos pontos.
 
             adc_pontos_placar_rodada(placar_rodada, novas_faces)
-            placar_parcial = placar_rodada['cerebros'] + placar_final[jogador_atual]['cerebros']
-            mostra_pontuacao_rodada(placar_rodada, placar_parcial)
-
+            #placar_parcial = placar_rodada['cerebros'] + placar_final[jogador_atual]['cerebros']
+            #mostra_pontuacao_rodada(placar_rodada, placar_parcial)
 
             if placar_rodada['tiros'] >= 3:
                 printa_na_tela('Você foi morto, seu turno acabou!x.x')
+                print(f'Você levou {placar_rodada["tiros"]} e não vai pontuar!')
                 zera_placar_rodada(placar_rodada)
                 mostra_placar_final(placar_final, jogador_atual)
                 jogador_atual += 1
@@ -234,9 +240,16 @@ while placar_final[jogador_atual]["cerebros"] < 13:
                     jogador_atual = 0
                 break
 
-            else:
-                printa_na_tela('Você deseja continuar?')
-                continua_turno = str(input('\033[1;35mSIM ou NÃO?\033[m').strip().lower())
+            elif placar_rodada['tiros'] < 3:
+                placar_parcial = placar_rodada['cerebros'] + placar_final[jogador_atual]['cerebros']
+                mostra_pontuacao_rodada(placar_rodada, placar_parcial)
+                if placar_parcial >= 13:
+                    printa_na_tela(f"Parabéns {nomes_jogadores[jogador_atual]}, você comeu "
+                                   f"{placar_parcial} cérebros e ganhou o jogo!")
+                    break
+                else:
+                    printa_na_tela('Você deseja continuar?')
+                    continua_turno = str(input('\033[1;35mSIM ou NÃO?\033[m').strip().lower())
 
         if continua_turno == 'não':
             adc_pontos_placar_final(placar_rodada, placar_final, jogador_atual)
@@ -244,7 +257,7 @@ while placar_final[jogador_atual]["cerebros"] < 13:
             mostra_placar_final(placar_final, jogador_atual)
             if placar_final[jogador_atual]['cerebros'] >= 13:
                 printa_na_tela(f"Parabéns {nomes_jogadores[jogador_atual]}, você comeu "
-                               f"{placar_final[jogador_atual]['cerebros']} e ganhou o jogo!")
+                               f"{placar_final[jogador_atual]['cerebros']} cérebros e ganhou o jogo!")
                 break
             jogador_atual += 1
             if jogador_atual == len(nomes_jogadores):
