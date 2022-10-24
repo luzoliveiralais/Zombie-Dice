@@ -146,7 +146,7 @@ def zera_placar_rodada(pontos_rodada):
 
 def continua_sim_ou_nao():
     printa_na_tela('Você deseja continuar?')
-    continua_turno = str(input('\033[1;35mSIM ou NÃO?\033[m').strip().lower())
+    continua_turno = str(input('\033[1;35mSIM ou NÃO?(Responda "s" ou "n")\033[m').strip().lower())
     return continua_turno
 
 def testa_fim_jogo(placar, condicao):
