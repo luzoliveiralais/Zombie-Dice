@@ -1,15 +1,11 @@
-# Use uma imagem base do Python
-FROM python:3.9-slim
+# Use uma imagem base oficial do Python
+FROM python:3
 
-# Defina o diretório de trabalho dentro do container
-WORKDIR /app
+# Defina o diretório de trabalho
+WORKDIR /Zombie-Dice
 
-# Copie o conteúdo do diretório local para o diretório de trabalho no container
-COPY . /app
+# Copie os arquivos necessários para o contêiner
+COPY . .
 
-# Instale as dependências do jogo (se houver um arquivo requirements.txt)
-RUN pip install -r requirements.txt
-
-# Defina o comando de entrada padrão para o container
-CMD ["python", "jogo2.py"]
-
+# Comando para iniciar a aplicação
+CMD ["python", "projeto_final.py"]
