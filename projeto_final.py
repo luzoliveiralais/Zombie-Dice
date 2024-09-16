@@ -7,7 +7,7 @@ from time import sleep
 
 def cabecalho():
     print('\033[1;30;42m o.o \033[m \033[1;35m             \033[m \033[1;30;42m x.x \033[m')
-    print(' \033[1;30;42m  _ \033[m \033[1;35m ZOMBIE DICE!\033[m  \033[1;30;42m _ \033[m')
+    print(' \033[1;30;42m  _ \033[m \033[1;35m ZOMBIE DIIICE!\033[m  \033[1;30;42m _ \033[m')
     print()
 
 
@@ -59,7 +59,7 @@ def mostra_cores_copo(copo):
 
 def checa_e_devolve_cerebros_ao_copo(copo, dados_a_pegar, cerebros):
     if len(copo) < dados_a_pegar or len(copo) == 0:
-        print('Adicionando cérebros ao copo!')
+        print('Adicionando cérebros ao copo !')
         for cerebro in cerebros:
             copo.append(cerebro)
         cerebros = []
@@ -77,7 +77,7 @@ def lanca_dados(dados, lista_cerebros):
 
 
 def cores_dados(dados):
-    printa_na_tela(f'Cores dos dados sorteados:')
+    printa_na_tela(f'Cores dos dados sorteados :')
     for dado in dados:
         if dado == pega_dado_verde():
             print('\033[1;32mVERDE\033[m', end=' ')
@@ -95,7 +95,7 @@ def mostra_face(faces):
             print(f'CÉREBRO - Você comeu um cérebro! ★.★ ')
 
         elif letra == 'P':
-            print(f'PEGADAS - Sua vítima escapou! (╥﹏╥)')
+            print(f'PEGADAS - Sua vítima escapoou! (╥﹏╥)')
 
         elif letra == 'T':
             print(f'TIRO - Você levou um tiro! ︻┳═一')
