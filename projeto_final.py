@@ -7,7 +7,7 @@ from time import sleep
 
 def cabecalho():
     print('\033[1;30;42m o.o \033[m \033[1;35m             \033[m \033[1;30;42m x.x \033[m')
-    print(' \033[1;30;42m  _ \033[m \033[1;35m ZOMBIE DIIICE!\033[m  \033[1;30;42m _ \033[m')
+    print(' \033[1;30;42m  _ \033[m \033[1;35m ZOMBIE DICE!\033[m  \033[1;30;42m _ \033[m')
     print()
 
 
@@ -223,7 +223,7 @@ while condicao:
     sleep(0.8)
     printa_na_tela(f'Turno do(a) {nomes_jogadores[jogador_atual]}!')
     sleep(0.8)
-    printa_na_tela(f'Sorteando os dados em 3,2,1...')
+    printa_na_tela(f'SORTEANDO OS DADOS EM 3,2,1...')
     sleep(2)
 
     # MOSTRANDO INFORMAÇÕES NA TELA
@@ -355,6 +355,7 @@ while condicao:
 print()
 print('\033[1;30;42m o.o \033[m  \033[1;35m            \033[m')
 print('\033[1;30;42m _  \033[m   \033[1;35mFIM DE JOGO!\033[m')
+print('\033[1;30;42m _  \033[m   \033[1;35mConfira o placar abaixo!\033[m')
 
 contador = 0
 for nome in nomes_jogadores:
