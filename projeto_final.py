@@ -361,3 +361,4 @@ contador = 0
 for nome in nomes_jogadores:
     print(f'        {nome}:\033[1;35m{placar_final[contador]["cerebros"]}\033[m')
     contador += 1
+
