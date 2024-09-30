@@ -356,9 +356,13 @@ print()
 print('\033[1;30;42m o.o \033[m  \033[1;35m            \033[m')
 print('\033[1;30;42m _  \033[m   \033[1;35mFIM DE JOGO!\033[m')
 print('\033[1;30;42m _  \033[m   \033[1;35mConfira o placar abaixo!\033[m')
-print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
+
 contador = 0
 for nome in nomes_jogadores:
     print(f'        {nome}:\033[1;35m{placar_final[contador]["cerebros"]}\033[m')
     contador += 1
 
+print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
+print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
+print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
+print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
