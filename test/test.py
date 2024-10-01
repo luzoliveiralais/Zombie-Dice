@@ -1,23 +1,17 @@
 import pytest
-from unittest.mock import patch
-from src.zombie_dice import iniciar_jogo, obter_quantidade_jogadores
+from src.zombie_dice import pega_dado_verde
+from src.zombie_dice import adc_pontos_placar_rodada
 
-# Simula as entradas para dois jogadores e várias rodadas
-@patch('builtins.input', side_effect=[
-    'Jogador1', 'Jogador2',  # Nomes dos jogadores
-    'n',  # Jogador 1 decide parar
-    'n',  # Jogador 2 decide parar
-    'n',  # Jogador 1 decide parar
-    'n'   # Jogador 2 decide parar
-])
-def test_iniciar_jogo(mock_input):
-    jogadores = 2
-    placar_final = iniciar_jogo(jogadores)
-    assert len(placar_final) == 2  # Verifica se o placar final foi criado corretamente
-    assert placar_final[0]['cerebros'] == 0  # Verifica o placar inicial
+def test_pega_dado_verde():
+    esperado = ("C", "P", "C", "T", "P", "C")  # Faces do dado verde
+    resultado = pega_dado_verde()
+    assert resultado == esperado, f"Esperado {esperado}, mas retornou {resultado}"
 
-# Corrigindo o nome da função para obter_quantidade_jogadores
-@patch('builtins.input', side_effect=['1', '2'])  # Simulando entrada inválida e válida
-def test_obter_quantidade_jogadores(mock_input):
-    quantidade_jogadores = obter_quantidade_jogadores()
-    assert quantidade_jogadores == 2  # Verifica se a função retornou 2 após a entrada correta
+
+def test_adc_pontos_placar_rodada():
+    pontos_rodada = {'cerebros': 0, 'tiros': 0, 'pegadas': 0}
+    faces = ['C', 'T', 'P']  # Uma rodada onde o jogador comeu um cérebro, levou um tiro e teve pegadas
+    resultado = adc_pontos_placar_rodada(pontos_rodada, faces)
+    
+    esperado = {'cerebros': 1, 'tiros': 1, 'pegadas': 1}
+    assert resultado == esperado, f"Esperado {esperado}, mas retornou {resultado}"
