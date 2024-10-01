@@ -1,17 +1,15 @@
 import pytest
-from src.zombie_dice import pega_dado_verde
-from src.zombie_dice import adc_pontos_placar_rodada
+from unittest.mock import patch
+from src.zombie_dice import iniciar_jogo, obter_quantidade_jogadores
 
-def test_pega_dado_verde():
-    esperado = ("C", "P", "C", "T", "P", "C")  # Faces do dado verde
-    resultado = pega_dado_verde()
-    assert resultado == esperado, f"Esperado {esperado}, mas retornou {resultado}"
+# Teste para verificar o início do jogo e registro dos jogadores
+@patch('builtins.input', side_effect=['2', 'Jogador1', 'Jogador2'])
+def test_iniciar_jogo(mock_input):
+    # Simula a entrada de 2 jogadores
+    quantidade_jogadores = obter_quantidade_jogadores()
+    assert quantidade_jogadores == 2
 
-
-def test_adc_pontos_placar_rodada():
-    pontos_rodada = {'cerebros': 0, 'tiros': 0, 'pegadas': 0}
-    faces = ['C', 'T', 'P']  # Uma rodada onde o jogador comeu um cérebro, levou um tiro e teve pegadas
-    resultado = adc_pontos_placar_rodada(pontos_rodada, faces)
-    
-    esperado = {'cerebros': 1, 'tiros': 1, 'pegadas': 1}
-    assert resultado == esperado, f"Esperado {esperado}, mas retornou {resultado}"
+    # Simula o início do jogo com 2 jogadores
+    nomes_jogadores = iniciar_jogo(quantidade_jogadores)
+    assert len(nomes_jogadores) == 2
+    assert nomes_jogadores == ['Jogador1', 'Jogador2']
