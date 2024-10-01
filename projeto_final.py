@@ -363,6 +363,3 @@ for nome in nomes_jogadores:
     contador += 1
 
 print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
-print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
-print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
-print('\033[1;30;42m _  \033[m   \033[1;35mTestando integração!\033[m')
