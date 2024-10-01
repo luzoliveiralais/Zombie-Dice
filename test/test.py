@@ -1,4 +1,3 @@
-import pytest
 from unittest.mock import patch
 from src.zombie_dice import pega_dado_verde, pega_dado_amarelo, pega_dado_vermelho, copo_dados, adc_pontos_placar_rodada, adc_pontos_placar_final, iniciar_jogo
 
