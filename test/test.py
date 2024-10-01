@@ -1,6 +1,6 @@
 import pytest
-from zombie_dice import pega_dado_verde, pega_dado_amarelo, pega_dado_vermelho
-from zombie_dice import pega_dados_do_copo, copo_dados, adc_pontos_placar_rodada, adc_pontos_placar_final
+from src.zombie_dice import pega_dado_verde, pega_dado_amarelo, pega_dado_vermelho
+from src.zombie_dice import pega_dados_do_copo, copo_dados, adc_pontos_placar_rodada, adc_pontos_placar_final
 
 
 def test_pega_dado_verde():
